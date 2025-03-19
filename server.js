@@ -24,6 +24,7 @@ const autenticar = (req, res, next) => {
 // Endpoint para buscar um produto por ID
 app.get('/produto/:id', autenticar, async (req, res) => {
     try {
+        const productId = req.params.id.trim(); // Remove possíveis espaços e quebras de linha
         const response = await axios.get(`${API_URL}/produtos/${req.params.id}`, {
             headers: { Authorization: `Bearer ${API_KEY}` }
         });
